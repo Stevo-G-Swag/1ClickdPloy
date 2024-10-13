@@ -28,7 +28,13 @@ jobs:
     - name: Run tests
       run: npm test
 
-    - name: Deploy
+    - name: Start backend server
+      run: |
+        cd backend
+        npm start > server.log 2>&1 &
+        sleep 5
+
+    - name: Run deployment test
       run: |
         cd backend
         chmod +x test-deploy.sh
